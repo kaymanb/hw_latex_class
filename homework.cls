@@ -2,6 +2,9 @@
 % Homework formatting for problem sets in Math and Computer Science
 % November 22nd 2016 Kayman Brusse - kaymanbrusse@gmail.com
 
+% TODO: Support for multiple authors
+% TODO: Custom numbers on questions and parts
+
 %%% SETUP %%%
 
 % Identification
@@ -13,18 +16,21 @@
     \PassOptionsToClass{\CurrentOption}{article}}}
 \ProcessOptions\relax
 
-% TODO: Support for multiple authors
-
 % Preliminary Definitions
 \LoadClass{article}
 
 % Required Math / CS Packages
 \RequirePackage{amsmath, amssymb, amsthm, enumitem}
-
-% Basic Page Sizing
 \RequirePackage[a4paper, total={6in, 8in}]{geometry}
 
 %%% Commands %%%
+
+% Commands for common sets.
+\newcommand{\C}{\mathbb{C}} % Complex Numbers
+\newcommand{\R}{\mathbb{R}} % Reals
+\newcommand{\Q}{\mathbb{Q}} % Rationals
+\newcommand{\Z}{\mathbb{Z}} % Integers
+\newcommand{\N}{\mathbb{N}} % Natural Numbers
 
 % Title
 \newcommand*{\course}[1]{\gdef\@course{#1}}
@@ -33,11 +39,11 @@
 \renewcommand{\author}[2]{\gdef\@author{#1}\gdef\@authid{#2}}
 
 \renewcommand{\maketitle}{%
-        {\Large \MakeUppercase{\textbf{\@course}}} \par
-        {\@hwdesc \enspace \@hwnum} \par
-        \@date \par
+    {\Large \MakeUppercase{\textbf{\@course}}} \par
+    \@hwdesc \enspace \@hwnum \par
+    \@date \par
     \bigskip
-    {{\@author} : \textsl{\@authid}}
+    \@author \enspace : \textsl{\@authid}
     \bigskip
 }
 
@@ -46,8 +52,7 @@
 
 \newcommand{\question}{%
     \stepcounter{questioncount}
-    
-    \bigskip
+    \vspace{36pt}
     {\noindent \textbf{Question %
         \arabic{questioncount}.}} 
     \smallskip
@@ -57,12 +62,12 @@
 % Part
 \newcounter{partcount}[questioncount]
 
-\newcommand{\qpart}{%
+\renewcommand{\part}{%
     \stepcounter{partcount}
-
+    
     \bigskip
     {\noindent \textbf{%
-        \quad \alph{partcount}) }
+        \quad (\alph{partcount}) }
     }
 }
 
@@ -75,6 +80,7 @@
     \noindent
 }
 
+% QED
 \renewcommand{\qed}{%
     \hfill
     $\blacksquare$

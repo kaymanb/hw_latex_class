@@ -1,10 +1,10 @@
 \documentclass[11pt]{homework}
 %Gummi|065|=)
-\course{mat101}
-\hwdesc{Problem Set}
+\course{mat327}
+\hwdesc{Assignment}
 \hwnum{3}
 \title{\textbf{Welcome to Gummi 0.6.5}}
-\author{John Smith}{1001274523}
+\author{John Smith}{1001235432}
 \date{\today}
 
 \begin{document}
@@ -12,24 +12,47 @@
 \maketitle
 
 \question
-Let $X$ and $Y$ be topological spaces. Let $f:X \rightarrow Y$ be a continous function.
-
-\qpart
-Lorem ipsu1m dolor sit amet, consectetur adipiscing elit. Sed porta, nibh ut egestas sodalez1
-
-\proof
-We will show that $X - f^{-1}(V)$ is open. Notice that $Y -V$ is open in $V$. By the continuity of $f$ we have
-$$
-f^{-1}(Y - V) = f^{-1}(Y) - f^{-1}(V) = X - f^{-1}(V)
-$$
-is open. \qed 
-
-\qpart
-Prove that if $f$ is an isomorphism then $f$ is an open map.fewe
+Give an example of a metric space $X$ and a closed and bounded set that is not compact.
 
 \solution
+Let $d$ be the standard metric on $\R$. Then $\bar{d}(x, y) = \min\{d(x, y), 1\}$ is the standard bounded metric, and generates the same topology. Consider the subspace $S = [0, \infty) \subset R$, given the subspace topology. $S$ is closed since it contains it's limit points. Additionally, for every $y \in S$, $\bar{d}(0, y) < 2$, so $S$ is contained inside $B_{\bar{d}}(0, 2)$ and is a bounded set. However, $S$ is not compact. For example consider the collection of sets of $\mathcal{A}$
+$$
+\mathcal{A} = \{[0, n): n \in N\}
+$$ 
+Since each set $A \in \mathcal{A}$ is open in the subspace topology, $\mathcal{A}$ is an open cover for $S$. However, any finite collections of sets $A$ from $\mathcal{A}$ will have that 
+$$
+m = \max\{n \in N : [0, n) \in A\}
+$$
+is in $S$ but not in any set in $A$. Thus $S$ not compact.
+
+\question
+Let $f:X\rightarrow Y$ be a map from $X$ to a compact Hausdorff space $Y$. Show that if the graph of $f(X)$ is closed, then $f$ is continuous. 
 
 \proof
+Let $A \subset Y$ be a closed set. We will show that $f^{-1}(A)$ is closed in $X$. First let $\pi_Y: X \times Y \rightarrow Y$ and $\pi_X:X \times Y \rightarrow X$ be projection maps. $\pi_Y$ is continuous so $U = \pi_Y^{-1}(A)$ is closed in $X \times Y$. Let $\Gamma$ be the graph of $f$. Since $\Gamma$ is closed $U^\prime = \Gamma \cap U$ is closed as well.\\
+\\
+Now claim that $\pi_X(U^\prime)$ is closed in $X$. First we have that $X \times Y - U^\prime$ is open in $X \times Y$. Consider the set $X_A  = \{x \in X : f(x) \not \in A\}$, which for each element $x$, $X \times Y - U^\prime$ contains the entire slice $x \times Y$. By the tube lemma, there is an open neighborhood $W_x$ of $x$ such that $W_x \times Y$ is contained in $X \times Y - U^\prime$. Thus the collection of all such neighborhoods
+$$
+\bigcup_{x \in X_A}W_x
+$$
+is an open set who's complement is exactly $\{x \in X : f(x) \in A\} = \pi_X(U^\prime) = f^{-1}(A)$, which must be closed.
+\qed
+
+\question
+Let $(K, d)$ be a compact metric space, and $f:K \rightarrow K$ be a map such that $d(f(x), f(y)) < d(x, y)$ for all $x \ne y$. Denote $K_0 = K$ and $K_{i + 1} = f(K_i)$.
+
+\part
+Prove that $\bigcap_{i = 1}^{\infty}K_i$ is a one-point set.
+
+\proof
+Trivial
+\qed
+
+\part 
+Show that $f$ has exactly one fixed point.
+
+\proof
+Left as an exercise to the reader.
 \qed
 
 
