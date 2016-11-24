@@ -19,7 +19,7 @@
 \LoadClass{article}
 
 % Required Math / CS Packages
-\RequirePackage{amsmath, amssymb, enumitem}
+\RequirePackage{amsmath, amssymb, amsthm, enumitem}
 
 % Basic Page Sizing
 \RequirePackage[a4paper, total={6in, 8in}]{geometry}
@@ -33,13 +33,11 @@
 \renewcommand{\author}[2]{\gdef\@author{#1}\gdef\@authid{#2}}
 
 \renewcommand{\maketitle}{%
-    \begin{center}
         {\Large \MakeUppercase{\textbf{\@course}}} \par
         {\@hwdesc \enspace \@hwnum} \par
-        \@date
-    \end{center}
-    \smallskip
-    {\textsl{\@author} \\ \@authid}
+        \@date \par
+    \bigskip
+    {{\@author} : \textsl{\@authid}}
     \bigskip
 }
 
@@ -69,7 +67,7 @@
 }
 
 % Proof
-\newcommand{\proof}{%
+\renewcommand{\proof}{%
     \bigskip
     \noindent \textit{Proof.}
     \par
@@ -77,7 +75,7 @@
     \noindent
 }
 
-\newcommand{\qed}{%
+\renewcommand{\qed}{%
     \hfill
     $\blacksquare$
 }
